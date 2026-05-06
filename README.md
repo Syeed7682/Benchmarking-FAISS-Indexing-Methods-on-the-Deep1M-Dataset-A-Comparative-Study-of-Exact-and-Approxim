@@ -50,8 +50,8 @@ pip install faiss-cpu h5py numpy pandas matplotlib seaborn
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/Syeed7682/Faiss_indexing.git
-    cd Faiss_indexing
+    git clone https://github.com/Syeed7682/Benchmarking-FAISS-Indexing-Methods-on-the-Deep1M-Dataset-A-Comparative-Study-of-Exact-and-Approxim.git
+    cd Benchmarking-FAISS-Indexing-Methods-on-the-Deep1M-Dataset-A-Comparative-Study-of-Exact-and-Approxim
     ```
 
 2.  **Dataset Acquisition**:
