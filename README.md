@@ -1,52 +1,92 @@
-# FAISS Performance Comparison on Deep1M Dataset
+# FAISS Performance Benchmarking on Deep1M Dataset
 
-This project implements and benchmarks various Approximate Nearest Neighbor (ANN) search indices using the **FAISS** library on the **Deep1M** dataset. The comparison includes exact search and various approximate methods across different dataset scales (100K and 1M vectors).
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![FAISS](https://img.shields.io/badge/library-FAISS-green.svg)](https://github.com/facebookresearch/faiss)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Project Overview
+A comprehensive analytical comparison of **Approximate Nearest Neighbor (ANN)** search algorithms using the Facebook AI Similarity Search (FAISS) library. This project benchmarks multiple indexing strategies on the **Deep1M** dataset (96-dimensional angular vectors).
 
-The project evaluates the following FAISS index types:
-- **IndexFlatIP**: Exact search using Inner Product (baseline).
-- **IndexIVFFlat**: Inverted File Index with Flat storage.
-- **IndexIVFPQ**: Inverted File Index with Product Quantization.
-- **IndexHNSWFlat**: Hierarchical Navigable Small World graphs.
-- **IndexLSH**: Locality Sensitive Hashing.
+---
 
-## Key Features
-- **Dataset Scale**: Benchmarks performed on 100,000 and 1,000,000 vector subsets.
-- **Metrics Evaluated**:
-    - Build Time (seconds)
-    - Average Query Latency (milliseconds)
-    - Recall@10
-    - Memory Usage (MB)
-- **Hyperparameter Tuning**: Sweeps for `nprobe` (IVF) and `efSearch` (HNSW) to analyze recall-latency trade-offs.
-- **Visualizations**: Comprehensive plots comparing performance across all indices.
+## 🚀 Project Overview
 
-## Requirements
+The objective of this assignment is to evaluate the performance trade-offs (Speed vs. Accuracy vs. Memory) between exact search and various approximation methods across different dataset scales.
 
-To run the script, you need the following Python packages:
+### 📊 Evaluated Indices
+*   **`IndexFlatIP`**: Brute-force exact search using Inner Product (Baseline).
+*   **`IndexIVFFlat`**: Inverted File Index—accelerates search by clustering vectors.
+*   **`IndexIVFPQ`**: Inverted File with Product Quantization—drastic memory compression.
+*   **`IndexHNSWFlat`**: Hierarchical Navigable Small World graphs—state-of-the-art graph-based search.
+*   **`IndexLSH`**: Locality Sensitive Hashing—probabilistic hashing for fast lookups.
+
+---
+
+## ✨ Key Features
+- **Multi-Scale Benchmarking**: Comparative analysis on **100K** and **1M** vector subsets.
+- **Performance Metrics**:
+    - ⏱️ **Build Time**: Time taken to train and populate the index.
+    - ⚡ **Query Latency**: Average time per search (measured in milliseconds).
+    - 🎯 **Recall@10**: Accuracy relative to the exact ground truth.
+    - 🧠 **Memory Usage**: RAM footprint of the serialized index.
+- **Hyperparameter Optimization**: Sweep analysis for `nprobe` (IVF) and `efSearch` (HNSW) to find the "sweet spot" in the recall-latency curve.
+- **Automated Visualization**: Generates 6 high-quality plots for deep-dive analysis.
+
+---
+
+## 🛠️ Installation & Setup
+
+### Prerequisites
+Ensure you have Python 3.8+ installed. It is recommended to use a virtual environment.
+
+### Dependencies
+Install the required analytical stack:
 ```bash
 pip install faiss-cpu h5py numpy pandas matplotlib seaborn
 ```
 
-## How to Run
+---
 
-1.  **Clone or Download**: Ensure the script `kha_mo_syeed_asif__2022_3_60_030_assignment_faiss_deep1m.py` is in your directory.
-2.  **Dataset**: The script will automatically attempt to download the `deep-image-96-angular.hdf5` dataset (approx. 3.5GB) from `ann-benchmarks.com`.
-3.  **Execute**:
+## 📖 How to Run
+
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/Syeed7682/Faiss_indexing.git
+    cd Faiss_indexing
+    ```
+
+2.  **Dataset Acquisition**:
+    The script handles the download of the `deep-image-96-angular.hdf5` dataset (approx. 3.5GB) automatically from ANN-Benchmarks.
+
+3.  **Execute Benchmarks**:
     ```bash
     python kha_mo_syeed_asif__2022_3_60_030_assignment_faiss_deep1m.py
     ```
 
-## Results & Visualizations
+---
 
-The script generates several summary tables and plots:
-- `plot1_build_time.png`: Comparison of index creation times.
-- `plot2_query_latency.png`: Average search time per query (log scale).
-- `plot3_recall.png`: Accuracy (Recall@10) comparison.
-- `plot4_memory.png`: RAM footprint of each index.
-- `plot5_recall_vs_latency.png`: Trade-off analysis between speed and accuracy.
+## 📉 Results & Insights
 
-## Author
+The execution generates a series of comparative visualizations:
+
+| Plot Name | Description |
+| :--- | :--- |
+| `plot1_build_time.png` | Efficiency of index creation across different architectures. |
+| `plot2_query_latency.png` | Search throughput analysis (logarithmic scale). |
+| `plot3_recall.png` | Accuracy benchmarks (Recall@10). |
+| `plot4_memory.png` | RAM efficiency and compression performance. |
+| `plot5_recall_vs_latency.png` | The core Speed-Accuracy trade-off scatter plot. |
+| `plot6_scalability.png` | Analysis of how performance shifts from 100K to 1M vectors. |
+
+---
+
+## 👨‍💻 Author
+
 **Kha. Mo. Syeed Asif**
-ID: 2022-3-60-030
-Assignment: FAISS Deep1M Analysis
+- **Student ID**: 2022-3-60-030
+- **Course**: CSE488 (Assignment)
+- **Institution**: East West University
+
+---
+
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
